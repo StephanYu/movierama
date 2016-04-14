@@ -3,7 +3,13 @@ class UserMailer < ActionMailer::Base
 
   def notification_email(user)
     @user = user
-    @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Someone has something to say about your movie! :)')
+    mail(to: @user.email, subject: 'Notification Email')
+    # mg_client = Mailgun::Client.new ENV['API_KEY']
+    # message_params = {:from    => ENV['MAIL_USERNAME'],
+    #   :to      => @user.email,
+    #   :subject => 'Sample Mail using Mailgun API',
+    #   :text    => 'This mail is sent using Mailgun API via mailgun-ruby'}
+    #   mg_client.send_message ENV['DOMAIN'], message_params
   end
+
 end
