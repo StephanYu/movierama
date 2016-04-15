@@ -8,7 +8,7 @@ gem 'foreman'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Use mailgun API for sending emails
-gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
+# gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 
 # Background Queuing for ActiveJob
 gem 'delayed_job_active_record'
@@ -55,7 +55,8 @@ gem 'bootstrap-sass'
 
 
 gem 'omniauth' # Authentication
-gem 'omniauth-github'
+# gem 'omniauth-github'
+gem 'omniauth-facebook'
 gem 'cancan'   # Authorisation
 
 
@@ -71,3 +72,6 @@ group :test do
   gem 'poltergeist'    # Driver for PhantomJS headless browser
   gem 'capybara'       # DSL for browser control
 end
+
+gem 'daemons', group: [:development, :test]
+gem 'activejob_backport'

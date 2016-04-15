@@ -3,6 +3,9 @@ class VotesController < ApplicationController
     authorize! :vote, _movie
 
     _voter.vote(_type)
+
+    SendEmailJob.perform_later(_movie.user.email, _movie.user.name)
+
     redirect_to root_path, notice: 'Vote cast'
   end
 

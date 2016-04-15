@@ -1,8 +1,7 @@
 class SendEmailJob < ActiveJob::Base
   queue_as :default
 
-  def perform(user)
-    @user = user
-    UserMailer.notification_email(@user).deliver_later
+  def perform(email, name)
+    UserMailer.notification_email(email, name)
   end
 end

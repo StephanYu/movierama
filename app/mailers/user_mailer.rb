@@ -1,9 +1,9 @@
 class UserMailer < ActionMailer::Base
   default from: 'notifications@movierama.com'
 
-  def notification_email(user)
-    @user = user
-    mail(to: @user.email, subject: 'Notification Email')
+  def notification_email(email, name)
+    @name = name
+    mail(to: email, subject: 'Notification Email')
     # mg_client = Mailgun::Client.new ENV['API_KEY']
     # message_params = {:from    => ENV['MAIL_USERNAME'],
     #   :to      => @user.email,
