@@ -4,7 +4,7 @@ class VotesController < ApplicationController
 
     _voter.vote(_type)
 
-    SendEmailJob.perform_later(_movie.user.email, _movie.user.name)
+    SendEmailJob.new(_movie.user.email, _movie.user.name).enqueue(wait: 5.seconds)
 
     redirect_to root_path, notice: 'Vote cast'
   end
@@ -13,6 +13,9 @@ class VotesController < ApplicationController
     authorize! :vote, _movie
 
     _voter.unvote
+
+    SendEmailJob.new(_movie.user.email, _movie.user.name).enqueue(wait: 5.seconds)
+
     redirect_to root_path, notice: 'Vote withdrawn'
   end
 

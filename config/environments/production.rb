@@ -45,17 +45,8 @@ Rails.application.configure do
   config.log_level = :info
 
   config.action_mailer.delivery_method = :smtp
-  # SMTP settings for mailgun
-  ActionMailer::Base.smtp_settings = {
-    :port           => 587,
-    :address        => "smtp.mailgun.org",
-    :domain         => ENV['DOMAIN'],
-    :user_name      => ENV['USERNAME'],
-    :password       => ENV['PASSWORD'],
-    :authentication => :plain,
-  }}
 
-  config.active_job.queue_adapter = :delayed_job
+  config.active_job.queue_adapter = :resque
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]

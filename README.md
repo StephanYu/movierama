@@ -66,9 +66,40 @@ If not, you'll need to get your own OAuth tokens from Github and edit
 `.env` appropriately.
 
 
-
 ### Screenshot
 
 So you know what to expect. This app's just a toy, remember?
 
 ![](https://dl.dropboxusercontent.com/spa/cbazgcyvth7jydp/-4eusn-o.png)
+
+### Commands to launch Resque and Mailcatcher
+for creating background jobs and intercepting sent emails
+
+
+1) rails server
+    start the rails app
+
+2) redis-server
+    make sure redis server is running in the background
+
+2) rake environment resque:scheduler
+    boot up the scheduler process in a separate process.
+    we require the Resque (https://github.com/resque/resque) and Resque Scheduler (https://github.com/resque/resque-scheduler) rake task, so we can start our workers with rake
+
+
+3) QUEUE=* rake environment resque:work
+    start a worker by running QUEUE=* rake environment resque:work. Launch the Resque console by running resque-web and visiting http://0.0.0.0:5678/overview
+
+4) mailcatcher (https://mailcatcher.me/)
+    run mailcatcher to intercept emails and view them at http://127.0.0.1:1080
+
+
+
+ 
+
+
+
+
+
+
+

@@ -7,11 +7,11 @@ gem 'foreman'
 # .env files loading
 gem 'dotenv-rails', groups: [:development, :test]
 
-# Use mailgun API for sending emails
-# gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
-
 # Background Queuing for ActiveJob
-gem 'delayed_job_active_record'
+gem 'resque'
+gem 'resque-scheduler'
+gem 'daemons', group: [:development, :test]
+gem 'activejob_backport'
 
 # Use unicorn as the app server
 gem 'unicorn'
@@ -73,5 +73,4 @@ group :test do
   gem 'capybara'       # DSL for browser control
 end
 
-gem 'daemons', group: [:development, :test]
-gem 'activejob_backport'
+

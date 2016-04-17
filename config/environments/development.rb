@@ -19,16 +19,20 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for mailgun
-  ActionMailer::Base.smtp_settings = {
-    :port           => 587,
-    :address        => "smtp.mailgun.org",
-    :domain         => ENV['DOMAIN'],
-    :user_name      => ENV['USERNAME'],
-    :password       => ENV['PASSWORD'],
-    :authentication => :plain,
-  }   
+  # ActionMailer::Base.smtp_settings = {
+  #   :port           => 587,
+  #   :address        => "smtp.mailgun.org",
+  #   :domain         => ENV['DOMAIN'],
+  #   :user_name      => ENV['USERNAME'],
+  #   :password       => ENV['PASSWORD'],
+  #   :authentication => :plain,
+  # }  
+  config.action_mailer.smtp_settings = { 
+    :address => "localhost", 
+    :port => 1025 
+  } 
 
-  config.active_job.queue_adapter = :delayed_job
+  config.active_job.queue_adapter = :resque
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
