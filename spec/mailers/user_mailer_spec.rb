@@ -12,10 +12,6 @@ RSpec.describe UserMailer do
       UserMailer.notification_email(@user.email, @user.name).deliver
     end
 
-    after(:each) do
-      ActionMailer::Base.deliveries.clear
-    end
-
     it 'sends an email' do
       expect(ActionMailer::Base.deliveries.count).to eq 1
     end
